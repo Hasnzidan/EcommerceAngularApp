@@ -1,0 +1,11 @@
+<div class="mb-3">
+  <select class="form-select form-select-lg mb-3"[(ngModel)]="selectedCategoryid">
+    <option selected value="0">All</option>
+    <option *ngFor="let category of categories" [value]="category.id">
+      {{ category.name }}
+    </option>
+  </select>
+</div>
+
+
+<app-products [recievedCategoryId]="selectedCategoryid"></app-products>

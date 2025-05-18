@@ -1,21 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { IProduct } from '../../../models/iproduct';
 import { CommonModule } from '@angular/common';
 import { ICategorie } from '../../../models/icategory';
 import { FormsModule } from '@angular/forms';
+import { HighlightCardDirective } from '../../directives/highlight-card.directive';
 
 @Component({
   selector: 'app-products',
-  imports: [CommonModule,FormsModule],
+  standalone: true,
+  imports: [CommonModule, FormsModule, HighlightCardDirective],
   templateUrl: './products.component.html',
   styleUrl: './products.component.css'
 })
-export class ProductsComponent {
+export class ProductsComponent implements OnChanges {
   totalOrderPrice: number = 0;
-  selectedCategoryid: number = 0;
-  products:IProduct[]
-  categories:ICategorie[]
-
+  products: IProduct[]
+  filteredProducts: IProduct[];
+ @Input() recievedCategoryId: number = 0
   constructor() {
     this.products = [
       {
@@ -83,20 +84,18 @@ export class ProductsComponent {
         categoryId: 3
       }
     ];
-    this.categories = [
-      {
-        id: 1,
-        name: 'Laptops'
-      },
-      {
-        id: 2,
-        name: 'Printers'
-      },
-      {
-        id: 3,
-        name: 'Tablets'
-      }
-    ];
+    this.filteredProducts = this.products
+  }
+  ngOnChanges() {
+    this.filterProduct()
+  }
+
+  filterProduct() {
+    if (this.recievedCategoryId == 0) {
+      this.filteredProducts = this.products
+    } else {
+      this.filteredProducts = this.products.filter((product) => product.categoryId == this.recievedCategoryId)
+    }
   }
 
 

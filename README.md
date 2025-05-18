@@ -1,6 +1,13 @@
 # EcommerceApp
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.0.
+A modern e-commerce application built with Angular 19.2.0 and Bootstrap 5.3.5.
+
+## Features
+
+- Product catalog display with dynamic filtering
+- Responsive design using Bootstrap
+- Real-time inventory tracking
+- Last item notifications
 
 ## Development server
 
@@ -11,6 +18,13 @@ ng serve
 ```
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+
+## Project Structure
+
+- `src/app/components/` - Contains all Angular components
+  - `header` - Navigation bar component
+  - `products` - Product listing component
+  - `footer` - Site footer component
 
 ## Code scaffolding
 
@@ -44,15 +58,11 @@ To execute unit tests with the [Karma](https://karma-runner.github.io) test runn
 ng test
 ```
 
-## Running end-to-end tests
+## Dependencies
 
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+- Angular 19.2.0
+- Bootstrap 5.3.5
+- RxJS 7.8.0
 
 ## Additional Resources
 
